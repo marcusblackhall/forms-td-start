@@ -12,6 +12,18 @@ export class AppComponent {
   answer: string = "";
   genders: string[] = ["male", "female"];
 
+  user = {
+    username: '',
+    email: '',
+    question: '',
+    answer: '',
+    gender: ''
+
+
+  };
+
+  submitted: boolean = false;
+
   @ViewChild('f') signupForm: NgForm
 
   suggestUserName() {
@@ -47,5 +59,13 @@ export class AppComponent {
 
   onSubmit() {
     console.log(this.signupForm);
+
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.question = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.questionAnswer;
+    this.user.gender = this.signupForm.value.gender;
+
+    this.submitted = true;
   }
 }
